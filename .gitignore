@@ -13,6 +13,8 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+./src/output/
+
 temp/**
 
 .vscode/**/launch.json

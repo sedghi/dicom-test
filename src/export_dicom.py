@@ -1,6 +1,6 @@
 from pydicom import Dataset
 from pydicom.uid import ExplicitVRLittleEndian, generate_uid, PYDICOM_IMPLEMENTATION_UID
-from pydicom._storage_sopclass_uids import SecondaryCaptureImageStorage
+from pydicom._storage_sopclass_uids import MRImageStorage
 from pydicom.dataset import FileMetaDataset
 from pydicom import dcmread
 from utils import safe_mkdirs 
@@ -21,31 +21,14 @@ def export_dicom(
     output_dir,  # for debugging
     file_name,  # for debugging
 ):
-    """Generates a Secondary Capture DICOM file based on the provided pixelData, and
-    a reference metadata from a reference DICOM file.
 
-
-    Args:
-        pixel_data (NumpyArray): PixelData for the dicom, containing a rotated MIP
-        series_number (Number): dicom SeriesNumber
-        rows (Number): image number of rows
-        columns (Number): image number of columns
-        number_of_frames (Number): DICOM number of frames
-        instance_number (Number): DICOM InstanceNumber
-        study_instance_uid (String): DICOM StudyInstanceUID
-        series_instance_uid (String): DICOM SeriesInstanceUID
-        series_description (String): DICOM Series Description
-        reference_dicom (String): Reference DICOM path, which will be used to extract the needed metadata 
-        dicomweb_client (Class): DICOMWeb client
-        output_dir (String): Output directory to store on local (used for debugging)
-    """
 
     dcm = dcmread(reference_dicom)
     SOPInstanceUID = generate_uid()
 
     file_meta = FileMetaDataset()
     file_meta.TransferSyntaxUID = ExplicitVRLittleEndian
-    file_meta.MediaStorageSOPClassUID = SecondaryCaptureImageStorage
+    file_meta.MediaStorageSOPClassUID = MRImageStorage
     file_meta.MediaStorageSOPInstanceUID = SOPInstanceUID
     file_meta.ImplementationClassUID = PYDICOM_IMPLEMENTATION_UID
 
@@ -94,7 +77,7 @@ def export_dicom(
 
     ds.PixelData = pixel_data.tobytes()
 
-    ds.SOPClassUID = SecondaryCaptureImageStorage
+    ds.SOPClassUID = MRImageStorage
     ds.SOPInstanceUID = SOPInstanceUID
 
     # for debugging
