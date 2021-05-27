@@ -12,7 +12,6 @@ def export_dicom(
     series_number,
     rows,
     columns,
-    number_of_frames,
     instance_number,
     study_instance_uid,
     series_instance_uid,
@@ -35,8 +34,8 @@ def export_dicom(
     ds = Dataset()
     ds.file_meta = file_meta
     ds.InstanceCreationDate = dcm.InstanceCreationDate
-    ds.StationName = "ohif"
-    ds.PatientName = "ohif-cornerstone-test"
+    ds.StationName = "test-render"
+    ds.PatientName = "test-render"
     ds.PatientID = dcm.PatientID
     ds.PatientBirthDate = dcm.PatientBirthDate
     ds.PatientSex = dcm.PatientSex
@@ -57,16 +56,15 @@ def export_dicom(
     ds.ImageOrientationPatient = dcm.ImageOrientationPatient
     ds.ImagePositionPatient = [dcm.ImagePositionPatient[0],
                                dcm.ImagePositionPatient[1], 
-                               dcm.ImagePositionPatient[2]+instance_number]
+                               dcm.ImagePositionPatient[2]+instance_number*5]
 
     ds.Modality = "MR"
     ds.SeriesInstanceUID = series_instance_uid
     ds.SeriesNumber = series_number
 
-    ds.NumberOfFrames = number_of_frames
-
     ds.Rows = rows
     ds.Columns = columns
+    # ds.SliceThickness = columns
     ds.SamplesPerPixel = 1
     ds.PixelSpacing = [1 ,1]
     ds.PhotometricInterpretation = 'MONOCHROME2'
