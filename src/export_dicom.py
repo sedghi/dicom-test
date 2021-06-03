@@ -54,9 +54,10 @@ def export_dicom(
     # In order for slices to appear in the same order we need position metadata
     # we are faking the imagepositionPatient for each slice by adding the instance_number
     ds.ImageOrientationPatient = dcm.ImageOrientationPatient
-    ds.ImagePositionPatient = [dcm.ImagePositionPatient[0],
-                               dcm.ImagePositionPatient[1], 
-                               dcm.ImagePositionPatient[2]+instance_number*5]
+    # ds.ImagePositionPatient = [dcm.ImagePositionPatient[0],
+    #                            dcm.ImagePositionPatient[1], 
+    #                            dcm.ImagePositionPatient[2]+instance_number*5]
+    ds.ImagePositionPatient = [0.0, 0.0, 0.0+ (instance_number -1 )*1]
 
     ds.Modality = "MR"
     ds.SeriesInstanceUID = series_instance_uid
