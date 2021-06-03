@@ -57,7 +57,7 @@ def export_dicom(
     # ds.ImagePositionPatient = [dcm.ImagePositionPatient[0],
     #                            dcm.ImagePositionPatient[1], 
     #                            dcm.ImagePositionPatient[2]+instance_number*5]
-    ds.ImagePositionPatient = [0.0, 0.0, 0.0+ (instance_number -1 )*1]
+    ds.ImagePositionPatient = [0.0, 0.0, 0.0+ (instance_number -1 )*5]
 
     ds.Modality = "MR"
     ds.SeriesInstanceUID = series_instance_uid
