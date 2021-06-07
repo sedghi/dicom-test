@@ -25,8 +25,12 @@ project_root = Path(__file__).parent.parent
 
 
 def make_dicom():
+    x_size = 100
+    y_size = 100
+    z_size = 10
+    slice_thickness = 10
     
-    pixel_data = np.zeros((100, 100, 10))
+    pixel_data = np.zeros((x_size, y_size, z_size))
 
     # study_instance_uid = generate_uid()
     study_instance_uid = "1.2.826.0.1.3680043.8.498.89515756153419402831179022658541245246"
@@ -35,14 +39,16 @@ def make_dicom():
 
     instance_number = 1
     start = 0
-    length = int(100/10)
-    for i in np.arange(10):
-        pixel_data[:, start: start + length, i] = 255 
+    length = int(x_size/z_size)
+    for i in np.arange(z_size):
+        # pixel_data[:, start: start + length, i] = np.random.randint(0 ,255, (x_size, z_size))
+        pixel_data[:, start: start + length, i] = 255
         start += length
 
         # exporting DICOMs based on the pixeldata and a reference metadata
         export_dicom(
             pixel_data=pixel_data[...,i].astype("uint8"),
+            slice_thickness= slice_thickness,
             reference_dicom=sample_dicom,
             rows=pixel_data.shape[0],
             columns=pixel_data.shape[1],

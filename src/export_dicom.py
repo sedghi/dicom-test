@@ -9,6 +9,7 @@ import os
 
 def export_dicom(
     pixel_data,
+    slice_thickness,
     series_number,
     rows,
     columns,
@@ -57,7 +58,7 @@ def export_dicom(
     # ds.ImagePositionPatient = [dcm.ImagePositionPatient[0],
     #                            dcm.ImagePositionPatient[1], 
     #                            dcm.ImagePositionPatient[2]+instance_number*5]
-    ds.ImagePositionPatient = [0.0, 0.0, 0.0+ (instance_number -1 )*5]
+    ds.ImagePositionPatient = [0.0, 0.0, 0.0+ (instance_number -1)* slice_thickness]
 
     ds.Modality = "MR"
     ds.SeriesInstanceUID = series_instance_uid
