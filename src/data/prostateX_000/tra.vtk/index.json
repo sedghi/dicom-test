@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "name": "tra.vtk"
+  },
+  "vtkClass": "vtkImageData",
+  "origin": [
+    -57.68543673603299,
+    -82.363056885483,
+    -27.080757354715
+  ],
+  "spacing": [
+    0.5000000000000001,
+    0.5000000000000003,
+    2.9999999941936903
+  ],
+  "extent": [
+    0,
+    383,
+    0,
+    383,
+    0,
+    18
+  ],
+  "pointData": {
+    "vtkClass": "vtkDataSetAttributes",
+    "arrays": [
+      {
+        "data": {
+          "ref": {
+            "id": "4339c9748211203359429e62d8060446",
+            "encode": "LittleEndian",
+            "basepath": "data",
+            "registration": "setScalars"
+          },
+          "vtkClass": "vtkDataArray",
+          "name": "scalars",
+          "dataType": "Uint16Array",
+          "numberOfComponents": 1,
+          "size": 2801664,
+          "ranges": [
+            {
+              "min": 0.0,
+              "max": 1118.0,
+              "component": null
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "cellData": {
+    "vtkClass": "vtkDataSetAttributes",
+    "arrays": []
+  },
+  "FieldData": {
+    "vtkClass": "vtkDataSetAttributes",
+    "arrays": []
+  }
+}
