@@ -26,8 +26,8 @@ project_root = Path(__file__).parent.parent
 
 def make_dicom():
     z_size = 11
-    width = 5
-    slice_thickness = 5
+    width = 1
+    slice_thickness = 1
     x_size = width*z_size
     y_size = x_size
     
