@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "name": "syntethic_dicom_11Slices_5mm.vtk"
+  },
+  "vtkClass": "vtkImageData",
+  "origin": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "spacing": [
+    1.0,
+    1.0,
+    5.0
+  ],
+  "extent": [
+    0,
+    54,
+    0,
+    54,
+    0,
+    10
+  ],
+  "pointData": {
+    "vtkClass": "vtkDataSetAttributes",
+    "arrays": [
+      {
+        "data": {
+          "ref": {
+            "id": "2f8ba29b04c3c6b31881ab1742fa8b6e",
+            "encode": "LittleEndian",
+            "basepath": "data",
+            "registration": "setScalars"
+          },
+          "vtkClass": "vtkDataArray",
+          "name": "scalars",
+          "dataType": "Uint8Array",
+          "numberOfComponents": 1,
+          "size": 33275,
+          "ranges": [
+            {
+              "min": 0.0,
+              "max": 255.0,
+              "component": null
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "cellData": {
+    "vtkClass": "vtkDataSetAttributes",
+    "arrays": []
+  },
+  "FieldData": {
+    "vtkClass": "vtkDataSetAttributes",
+    "arrays": []
+  }
+}

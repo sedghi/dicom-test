@@ -25,10 +25,11 @@ project_root = Path(__file__).parent.parent
 
 
 def make_dicom():
-    x_size = 100
-    y_size = 100
-    z_size = 10
-    slice_thickness = 10
+    z_size = 11
+    width = 5
+    slice_thickness = 5
+    x_size = width*z_size
+    y_size = x_size
     
     pixel_data = np.zeros((x_size, y_size, z_size))
 
@@ -43,6 +44,9 @@ def make_dicom():
     for i in np.arange(z_size):
         # pixel_data[:, start: start + length, i] = np.random.randint(0 ,255, (x_size, z_size))
         pixel_data[:, start: start + length, i] = 255
+        # pixel_data[:, start + 2*width: start + 2* width + length, i] = 255
+        # if (i + 1 <= z_size -1):
+        #     pixel_data[:, start + width: start + width + length, i+1] = 255
         start += length
 
         # exporting DICOMs based on the pixeldata and a reference metadata
